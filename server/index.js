@@ -12,16 +12,17 @@ app.use(express.json());
 app.use(cors());
 
 //Database connection
-const connectString = `mongodb+srv://${process.env.DB_USER}admin:${process.env.DB_PASSWORD}@postitcluster.f4gccvl.mongodb.net/${process.env.DATABASE_NAME}?appName=PostITCluster`;
+//const connectString = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@postitcluster.f4gccvl.mongodb.net/${process.env.DATABASE_NAME}?retryWrites=true&w=majority&appName=PostITCluster`;
 
-mongoose.connect(connectString);
+const constr =`mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@postitcluster.f4gccvl.mongodb.net/${process.env.DATABASE_NAME}?appName=PostITCluster`
+mongoose.connect(constr);
 
 
 app.listen(process.env.PORT, () => {
   console.log("You are connected");
 });
-//POST API-logoutBVXJCBJ
 
+//POST API-logoutBVXJCBJ
 app.post("/logout", async (req, res) => {
   res.status(200).json({ message: "Logged out successfully" });
 });
